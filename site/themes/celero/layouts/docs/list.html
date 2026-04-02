@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="pt-16">
+  <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:flex">
+      <!-- Mobile sidebar toggle -->
+      <button id="sidebar-open" class="lg:hidden fixed bottom-5 right-5 z-40 p-3 bg-accent text-white rounded-full shadow-lg shadow-accent/20 hover:bg-accent-light transition-colors" aria-label="Open sidebar">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <div id="sidebar-overlay" class="hidden fixed inset-0 bg-bg/80 backdrop-blur-sm z-30 lg:hidden"></div>
+
+      <aside id="sidebar" class="fixed top-16 left-0 bottom-0 w-72 bg-bg border-r border-border z-40 overflow-y-auto transform -translate-x-full lg:translate-x-0 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:w-64 lg:shrink-0 lg:border-r-0 transition-transform duration-200">
+        {{ partial "sidebar.html" . }}
+      </aside>
+
+      <article class="flex-1 min-w-0 py-8 px-4 sm:px-6 lg:px-12">
+        <div class="prose max-w-3xl">
+          <h1>{{ .Title }}</h1>
+          {{ .Content }}
+        </div>
+
+        {{ if .Pages }}
+        <div class="mt-8 grid gap-3 max-w-3xl">
+          {{ range .Pages.ByWeight }}
+          <a href="{{ .RelPermalink }}" class="group block p-5 bg-surface/60 border border-border rounded-xl hover:border-accent/40 transition-all duration-200">
+            <h3 class="font-medium text-text group-hover:text-accent transition-colors">{{ .Title }}</h3>
+            {{ with .Description }}<p class="mt-1 text-sm text-muted">{{ . }}</p>{{ end }}
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </article>
+
+      {{ partial "toc.html" . }}
+    </div>
+  </div>
+</div>
+{{ end }}

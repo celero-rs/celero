@@ -1,0 +1,24 @@
+baseURL: "https://celero-rs.github.io/"
+languageCode: en
+title: Celero
+
+theme: celero
+
+markup:
+  highlight:
+    style: github-dark
+    lineNos: false
+    noClasses: true
+    guessSyntax: true
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - JSON
+
+params:
+  description: "High-performance, API-first Rust web framework for microservices"
+  github: "https://github.com/celero-rs/celero"

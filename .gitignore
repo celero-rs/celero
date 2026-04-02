@@ -1,0 +1,21 @@
+/target
+Cargo.lock
+*.swp
+*.swo
+.DS_Store
+.env
+.venv/
+.claude/
+**/target/
+
+# Hugo
+site/public/
+site/node_modules/
+site/.hugo_build.lock
+
+# Deploy keys
+celero-docs-deploy
+celero-docs-deploy.pub
+
+# DB files
+*.db

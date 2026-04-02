@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "css:build": "postcss themes/celero/assets/css/main.css -o assets/css/styles.css",
+    "css:dev": "postcss themes/celero/assets/css/main.css -o assets/css/styles.css --watch",
+    "dev": "npm run css:dev & hugo server",
+    "build": "npm run css:build && hugo --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4",
+    "@tailwindcss/postcss": "^4",
+    "postcss": "^8",
+    "postcss-cli": "^11"
+  }
+}

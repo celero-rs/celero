@@ -1,0 +1,7 @@
+name = "Celero"
+license = "MIT"
+description = "Documentation theme for Celero framework"
+min_version = "0.120.0"
+
+[author]
+  name = "Celero"

@@ -1,0 +1,24 @@
+{{ $current := . }}
+{{ $docs := site.GetPage "docs" }}
+
+<nav class="py-6 pr-4 text-sm overflow-y-auto">
+  {{ range $docs.Sections.ByWeight }}
+    {{ $isActive := or ($current.IsDescendant .) (eq $current.RelPermalink .RelPermalink) }}
+    <div class="sidebar-section mb-5">
+      <button class="sidebar-toggle flex items-center justify-between w-full px-3 py-1 text-left font-semibold text-xs uppercase tracking-wider {{ if $isActive }}text-text{{ else }}text-dim hover:text-muted{{ end }} transition-colors">
+        <span>{{ .Title }}</span>
+        <svg class="w-3.5 h-3.5 sidebar-chevron transition-transform duration-150 {{ if $isActive }}rotate-90{{ end }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <div class="sidebar-items mt-1.5 ml-3 space-y-0.5 border-l border-divider {{ if not $isActive }}hidden{{ end }}">
+        {{ range .Pages.ByWeight }}
+          <a href="{{ .RelPermalink }}"
+            class="block pl-3 py-1 transition-colors {{ if eq $current.RelPermalink .RelPermalink }}text-accent font-medium border-l-2 border-accent -ml-px{{ else }}text-muted hover:text-text{{ end }}">
+            {{ .Title }}
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</nav>
