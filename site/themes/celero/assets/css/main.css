@@ -66,6 +66,21 @@ code {
   border: 1px solid var(--color-border);
 }
 
+/* Keep code blocks dark in light mode so github-dark syntax colors remain visible */
+html.light pre {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+  color: #c9d1d9;
+}
+html.light .highlight pre {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+}
+html.light :not(pre) > code {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
 /* ── Prose (doc content) ── */
 .prose {
   color: var(--color-text);
